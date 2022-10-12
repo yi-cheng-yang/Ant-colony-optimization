@@ -70,13 +70,8 @@ class ACO{
                     }
                     update_ptable();
 
-                    // double eup_rate = 0.8 - 0.6 * (double(ic) / iter);
-                    // if(RandomReal_with_uniform(0.0, 1.0, generator) < eup_rate){
-                    //     elite_update();
-                    // }
                 }
                 cout << min_dis << endl;
-                // cout << "distance: " << min_dis << endl;
                 // for(size_t i = 0; i < shortest_path.size(); ++i){
                 //     cout << shortest_path[i] << endl;
                     // cout << MAP[shortest_path[i] - 1][1] << " " << MAP[shortest_path[i] - 1][2] << endl;
@@ -205,28 +200,6 @@ class ACO{
                 P_table[start][end] += increase;
                 P_table[end][start] += increase;
             }
-        }
-        void elite_update(){
-            double best_dis = DBL_MAX;
-            int best_ant = -1;
-            for(size_t ac = 0; ac < ant_colony.size(); ++ac){
-                if(ant_colony[ac].length < best_dis){
-                    best_dis = ant_colony[ac].length;
-                    best_ant = ac;
-                }
-            }
-            double increase = Q_ / ant_colony[best_ant].length;
-            int start, end;
-            for(size_t cc = 0; cc < ant_colony[best_ant].path.size() - 1; ++cc){
-                start = ant_colony[best_ant].path[cc] - 1;
-                end = ant_colony[best_ant].path[cc + 1] - 1;
-                P_table[start][end] += increase;
-                P_table[end][start] += increase;
-            }
-            start = *(ant_colony[best_ant].path.end() - 1) - 1;
-            end = *(ant_colony[best_ant].path.begin()) - 1;
-            P_table[start][end] += increase;
-            P_table[end][start] += increase;
         }
 };
 
