@@ -1,5 +1,5 @@
 # Ant-colony-optimization
-Ant colony optimization for Travelling salesman problem
+Ant colony optimization for Travelling salesman problem <br>
 run: number of runs <br>
 iter: number of iterations <br>
 alpha: factor alpha in probability calculating <br>
